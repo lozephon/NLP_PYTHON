@@ -1,0 +1,138 @@
+# -*- coding: UTF-8 -*-
+#!/usr/bin/python 
+ 
+import re
+import cgi 
+import os
+from subprocess import *
+import sys
+import string
+from unicodedata import name
+import locale
+import sets
+import re
+import codecs
+from xml.sax import make_parser
+from xml.sax import handler
+import codecs
+
+parser = make_parser()
+
+lines = []
+contents = None
+
+class MyHandler(handler.ContentHandler):
+    def __init__(self):
+        self.isContents = False
+        self.contents = ""
+        
+    def startElement(self, name, attrs):
+        if name == 'contents':
+            self.isContents = True
+            self.contents = ""
+    
+    def characters(self, content):
+        if self.isContents:
+            self.contents += content
+            
+    def endElement(self, name):
+        if name == 'contents':
+            self.isContents = False
+
+h = MyHandler()
+parser.setContentHandler(h)
+
+parser.parse(codecs.open('\data\news.txt', 'r', encoding='cp949'))
+
+TemplateFile = "html/template.html" 
+ 
+# ����ڿ��� ������ �� ���� �̸�
+FormFile = "html/form.html" 
+
+# Display �Լ�.  ����� ���ڿ��� �ϳ��� �μ��� �޴´�.
+def Display(Content):
+    TemplateHandle = open(TemplateFile, "r")  # ���� �б���� ����
+    # ��ü ������ �д´�
+    TemplateInput = TemplateHandle.read()
+    TemplateHandle.close()                    # ���� Ŭ�ο���
+    # Ʋ ������ �߸� �Ǿ��� ���� ���� ����
+    BadTemplateException = "HTML Ʋ ���Ͽ� ������ �����~" 
+ 
+    SubResult = re.subn("<!-- \*\*\* INSERT CONTENT HERE \*\*\* -->", Content,TemplateInput)
+    if SubResult[1] == 0:
+
+        raise BadTemplateException 
+    print "Content-Type: text/html\n\n"
+    print SubResult[0] 
+ 
+### Ʋ�� �����ְ�, �� ���� ó���ϴ� �� ���� ���� �ൿ �Լ� ����
+ 
+# ������ �Լ���.
+def DisplayForm():
+
+    FormHandle = open(FormFile, "r")
+
+    FormInput = FormHandle.read()
+
+    FormHandle.close()    
+    Display(FormInput) 
+ 
+def ProcessForm(form):    
+
+    # �� ������ ���� ����..
+    try:
+        name = form["name"].value
+    except:
+
+        # name �� ���ǾȵǾ����� �޽��� ����ϰ� ����
+        Display("�̸��� �Է��ϼž� �մϴ�. �ǵ��ư� �ּ���")
+        raise SystemExit
+    try:
+        email = form["email"].value
+    except:
+        email = None
+    try:
+        color = form["color"].value
+    except:
+        color = None
+    try:
+        comment = form["comment"].value
+    except:
+        comment = None 
+ 
+    Output = ""  # ��� ���� �ʱ�ȭ
+    Output = Output + "Hello, "     
+ 
+    if email != None:
+        Output = Output + "<A HREF=\"mailto:\"" + email + ">" +  name + "</A>.<P>"
+    #else:
+        #Output = Output + name + ".<P>"     
+
+    if color == "swallow":
+        Output = Output + "You must be a Monty Python fan.<P>"
+    elif color != None:
+        Output = Output + "Your favorite color was " + color + "<P>"
+    else:
+        Output = Output + "You cheated!  You didn't specify a color!<P>"     
+    if comment != None:
+        Output = Output + "In addition, you said:<BR>" + comment + "<P>"     
+ 
+    Display(Output) 
+ 
+###
+### ���� ��ũ��Ʈ ���⼭ ����
+### 
+ 
+### CGI �䱸 ��
+form = cgi.FieldStorage() 
+ 
+### "key" �� �� ����� �����.
+
+try:
+    key = form["key"].value
+except:
+    key = None 
+if key == "process":
+    ProcessForm(form)
+else:
+    DisplayForm()

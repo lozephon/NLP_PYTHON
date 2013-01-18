@@ -1,0 +1,8 @@
+commit_dialog_history_messages=<?xml version\="1.0" encoding\="UTF-8"?>\r\n<messages>\r\n<message>cgi-bin first commit</message>\r\n<message>crawling first</message>\r\n<message>ADD \uC73C\uD558\uD558</message>\r\n<message>gitTemp</message>\r\n<message>first commit</message>\r\n</messages>
+commit_dialog_push_upstream=true
+eclipse.preferences.version=1
+resourcehistory_graph_split=500,500
+resourcehistory_rev_split=700,300
+show_git_prefix_warning=false
+show_home_drive_warning=false
+show_initial_config_dialog=false

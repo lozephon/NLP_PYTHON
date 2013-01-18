@@ -1,0 +1,10 @@
+MODULES_MANAGER_V2
+anno|C:\httpd\cgi-bin\anno.py
+annoBackup|C:\httpd\cgi-bin\annoBackup.py
+annoBackup2|C:\httpd\cgi-bin\annoBackup2.py
+annoBackup3|C:\httpd\cgi-bin\annoBackup3.py
+annoV2|C:\httpd\cgi-bin\annoV2.py
+anno_targetFix|C:\httpd\cgi-bin\anno_targetFix.py
+hello|C:\httpd\cgi-bin\hello.py
+sample1|C:\httpd\cgi-bin\sample1.py
+temp|C:\httpd\cgi-bin\temp.py

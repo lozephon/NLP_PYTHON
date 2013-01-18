@@ -1,0 +1,185 @@
+# -*- coding: UTF-8 -*-
+#!/usr/bin/python 
+ 
+import re
+import cgi 
+import os
+import string
+
+def parsing(dirname, filename, isEncoding):
+    filepath ='data/%s/%s' % (dirname, filename)
+
+    with open(filepath) as f:
+        lines = re.findall(r'<s>.*?</s>', f.read())
+        if isEncoding:
+            lines = [line[3:-4].decode('utf-8').encode('euc-kr') for line in lines]
+        else:
+            lines = [line[3:-4] for line in lines]
+        return lines
+
+def display(Content):
+    print Content 
+
+def logText(Content):
+    print #Content
+
+def checkfile(dirname, filename):
+    filelist = []
+    #for root, dirs, files in os.walk('data/'+dirname+'/'):
+    for fileInfo in os.walk('./data/%s/' % dirname):  
+        for fname in fileInfo[2]:  
+            if fname[-3:]=='txt' or fname[-3:]=='xml':
+                filelist.append(fname)
+                #     fullpath = os.path.join(root, fname)  
+    
+    isEncoding = True
+    
+    if not filelist:
+        return filename, None, isEncoding
+    
+    if filename == '':
+        filename = filelist[0]
+        isEncoding = False
+    
+    if not filename in filelist:
+        return filename, None, isEncoding
+        
+    fileidx = filelist.index(filename)
+    if len(filelist) == fileidx+1:
+        return filename, 'EOF', isEncoding
+    else:
+        return filename, filelist[fileidx+1], isEncoding
+                
+def displayForm(dirname, filename):
+    filename, nextfilename, isEncoding = checkfile(dirname, filename) 
+    if not nextfilename:
+        display("There is no such file")
+        return
+    
+    logText("display form (" + ' ' + dirname + ' ' + filename + ' ' + nextfilename + ")")
+    lines = parsing(dirname, filename, isEncoding)
+    
+    HTML = "<form method='post' action='anno.py'><input type=hidden name='before' value='"+filename+"'><input type=hidden name='dirname' value='"+dirname+"'><input type=hidden name='filename' value='"+nextfilename+"'/>"
+    HTML += open('html/script.js').read()[3:] + 'FILENAME : %s' % filename
+    
+    '''
+    symbols = ['‘', '’', '“', '”', "'", "%"]
+    symbols = [symbol.decode('utf-8').encode('euc-kr') for symbol in symbols]
+    symbolTags = ['&#39;', '&#39;', '&#34;', '&#34;', '&#39;', '&#37;']
+    symbolTags = [symbolTag.decode('utf-8').encode('euc-kr') for symbolTag in symbolTags]
+    symbolDic = {}
+    
+    for symIdx in range(len(symbols)):
+        symbolDic[symbols[symIdx]] = symbolTags[symIdx]
+    '''
+    
+    idx = 0
+    for line in lines:
+        words = line.split()
+        '''
+        tempWords = []
+        for word in words:
+            newWord = word
+            for symbol in symbols:
+                newWord = re.sub(r'%s' % symbol, symbolDic[symbol], newWord)
+            tempWords.append(newWord) 
+            
+        words = tempWords
+        '''
+        
+        tableHTML = "<hr/><br/><div name='div%d'><nobr>%d) %s</nobr><br/><br/><table name='table%s' border='1'><tr>" % (idx, idx+1, line, idx)
+        for word in words:
+            tableHTML += "<td nowrap=true name='td%d'>" % idx + word + "</td>"
+        tableHTML += "</tr><tr align='center'>"
+        for i in range(len(words)):
+            tableHTML += "<td><input type='checkbox' name='check%d' value='%d'></td>" % (idx, i) 
+        tableHTML += "</tr></table><br/>"
+        
+        selectHTML = '''Type <select name ='select%d' size='1'>
+                        <option value='0' selected>%s</option>
+                        <option value='1'>%s</option>
+                        <option value='2'>%s</option>
+                        <option value='3'>%s</option>
+                        <option value='4'>%s</option>
+                        <option value='5'>%s</option>
+                        <option value='6'>%s</option>
+                        </select>
+                    ''' % (idx, '명사절','부사절','인용절','관형사절-동격','관형사절-관계-주격', '관형사절-관계-목적격', '관형사절-관계-부사격')
+        
+        addHTML = "<input type='button' value='Add' onClick='addClause(%d)'><br/></div>" % idx
+        
+        #textHTML = "<textarea name = 'text%s'></textarea>" % idx
+        textHTML = "<input type=hidden name='isClause%d' value='isClause'/><input type=hidden name='clause%d' value=''/>" % (idx, idx)
+        
+        #HTML += tableHTML + selectHTML + addHTML + textHTML
+        HTML += tableHTML + selectHTML.decode('utf-8').encode('cp949') + addHTML + textHTML + "<br/><br/>"
+        #HTML += tableHTML.encode('cp949') + selectHTML.decode('utf-8').encode('cp949') + addHTML + "<br/><br/>"
+        idx += 1
+    HTML += "<input type='submit' value='submit'></form>"        
+    display(HTML) 
+
+def indexForm():
+    HTML = '''<form method='post' action='anno.py'>
+                Directory Name 
+                <input type=hidden name='init' value='init'/>
+                <input type='text' name='dirname' value=""/> 
+                File Name
+                <input type='text' name='filename' value=""/>
+                <input type='submit' value='start'>
+              </form>
+            '''
+    display(HTML)
+
+def saveAnnotation(form, dirname, filename):
+    logData = ""
+    
+    i = 0
+    while form.getvalue('isClause%d' % i):
+        clauseStr = ''
+        if form.getvalue('clause%d' % i):
+            clauseStr = form.getvalue('clause%d' % i)
+        logData += '<s num=%d>' % i + clauseStr + '</s>\n'
+        i += 1
+        
+    open('result/%s/%s' % (dirname, filename), 'w+').write(logData)
+    
+def main():
+    display("Content-Type: text/html;\n\n")
+    display("<html><head><title>Sentence annotator</title></head><body>")
+    
+    form = cgi.FieldStorage() 
+    
+    try:
+        form['init'].value
+        try:
+            dirname = form['dirname'].value
+        except KeyError:
+            dirname = ''
+        
+        try:
+            filename = form['filename'].value
+        except KeyError:
+            filename = ''
+            
+        displayForm(dirname, filename)
+    except KeyError:
+        try:
+            dirname = form['dirname'].value
+            if not form.getvalue('filename'):
+                filename = ''
+            else:
+                filename = form['filename'].value
+            
+            before = form['before'].value
+            saveAnnotation(form, dirname, before)
+            if filename == 'EOF':
+                display('Annotation Complete in %s Directory' % dirname)
+            else:
+                displayForm(dirname, filename)
+        except KeyError:
+            indexForm()
+            
+    display('</body></html>')
+            
+if __name__ == '__main__':
+    main()

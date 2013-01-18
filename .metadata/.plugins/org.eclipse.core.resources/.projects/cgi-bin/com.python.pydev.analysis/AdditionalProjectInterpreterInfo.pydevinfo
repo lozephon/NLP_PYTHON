@@ -1,0 +1,67 @@
+-- VERSION_3
+-- START DISKCACHE
+C:\httpd\.metadata\.plugins\org.eclipse.core.resources\.projects\cgi-bin\com.python.pydev.analysis\v1_indexcache
+.v1_indexcache
+hello|0|C:\httpd\cgi-bin\hello.py
+sample1|0|C:\httpd\cgi-bin\sample1.py
+annoV2|0|C:\httpd\cgi-bin\annoV2.py
+anno_targetFix|0|C:\httpd\cgi-bin\anno_targetFix.py
+anno|0|C:\httpd\cgi-bin\anno.py
+annoBackup2|0|C:\httpd\cgi-bin\annoBackup2.py
+temp|0|C:\httpd\cgi-bin\temp.py
+annoBackup3|0|C:\httpd\cgi-bin\annoBackup3.py
+annoBackup|0|C:\httpd\cgi-bin\annoBackup.py
+-- END DISKCACHE
+-- START DICTIONARY
+12
+10=MyHandler.startElement
+9=MyHandler
+7=sample1
+1=annoV2
+8=anno_targetFix
+3=anno
+5=annoBackup2
+6=temp
+4=annoBackup3
+2=annoBackup
+11=MyHandler.__init__
+12=MyHandler.endElement
+-- END DICTIONARY
+-- START TREE 1
+25
+che|5|checkfile!10@checkfile!18@checkfile!26@checkfile!34@checkfile!42@
+cla|1|clauses!51@
+dis|12|displayForm!26@display!26@displayForm!34@displayForm!10@Display!58@displayForm!18@display!10@display!18@display!34@displayForm!42@display!42@DisplayForm!58@
+fil|1|filelist!51@
+for|1|FormFile!59@
+ful|1|fullpath!51@
+get|2|getPrdTitle!66@getType!66@
+idx|1|idx!51@
+ind|5|indexForm!26@indexForm!34@indexForm!18@indexForm!10@indexForm!42@
+inf|1|infos!51@
+lin|1|lines!51@
+log|5|logText!10@logText!42@logText!34@logText!26@logText!18@
+mai|5|main!34@main!10@main!42@main!26@main!18@
+mye|2|myEncoding!10@myEncoding!26@
+myh|1|MyHandler!17@
+ncl|1|nClause!51@
+nfi|1|nfile!51@
+nse|1|nSentences!51@
+par|5|parsing!10@parsing!26@parsing!18@parsing!34@parsing!42@
+pos|1|postParamsFromURI!66@
+pro|1|ProcessForm!58@
+rse|1|rSen!51@
+sav|5|saveAnnotation!18@saveAnnotation!10@saveAnnotation!34@saveAnnotation!26@saveAnnotation!42@
+sen|1|sentences!51@
+tem|1|TemplateFile!59@
+-- END TREE
+-- START TREE 2
+7
+__i|1|__init__!9&18@
+cha|1|characters!9&18@
+con|2|contents!10&19@contents!11&19@
+end|1|endElement!9&18@
+isc|3|isContents!12&19@isContents!10&19@isContents!11&19@
+lin|1|lines!11&19@
+sta|1|startElement!9&18@
+-- END TREE

@@ -1,0 +1,20 @@
+-- VERSION_3
+-- START DISKCACHE
+C:\httpd\.metadata\.plugins\org.eclipse.core.resources\.projects\crawling\com.python.pydev.analysis\v1_indexcache
+.v1_indexcache
+make_news_data_ytn|0|C:\httpd\crawling\make_news_data_ytn.py
+-- END DISKCACHE
+-- START DICTIONARY
+1
+1=make_news_data_ytn
+-- END DICTIONARY
+-- START TREE 1
+4
+dis|1|display_result!10@
+fin|2|find_news!10@find_news_contents!10@
+get|1|get_news!10@
+wri|1|write_file!10@
+-- END TREE
+-- START TREE 2
+0
+-- END TREE

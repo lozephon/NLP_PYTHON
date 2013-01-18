@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;cgi-bin/annoV2.py&apos; to &apos;annoBackup3.py&apos;" description="Rename resource &apos;annoV2.py&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="annoV2.py" name="annoBackup3.py" stamp="1358307835730" updateReferences="true"/>
+</session>

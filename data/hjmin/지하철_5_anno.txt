@@ -1,0 +1,356 @@
+﻿<news>
+<title>미혼부 아들이 미혼모 엄마를 만났을 때</title>
+<link>http://www.hani.co.kr/arti/culture/movie/563335.html</link>
+<h_list>
+<h><img src=http://img.hani.co.kr/section-image/09/news/icon_han21.gif border=0 align=absmiddle> 사회가 범죄자로 낙인찍은</h>
+<h>소년의 속사정을 파고드는 영화 <범죄소년></h>
+<h>공분과 각성 대신 공감과</h>
+<h>이해 부추기는 인권영화의 따뜻한 감수성</h>
+</h_list>
+<contents>
+<st>
+<s_id>1</s_id>
+<s>“얼른 집에 들어가라.” 어른들은 한결같이 이렇게 당부했지만 그는 돌아갈 집이 없다.</s>
+<wcnt>0</wcnt>
+<bleu1>0</bleu1>
+<bleu2>0</bleu2>
+</st>
+<st>
+<s_id>2</s_id>
+<s>이 소년의 집은 어디인가. 게다가 범죄소년의 집은 어디인가. 범죄자 연령에는 미달하지만 형사적 책임을 져야 할 소년이 가야 할 집은 일상적인 보호관찰 시행이 닿을 곳, 교화가 가능한 곳, 성인이 보호하는 곳, 최소한 잠을 자고 가족과 동거할 수 있는 곳을 말한다.</s>
+<wcnt>0</wcnt>
+<bleu1>1</bleu1>
+<bleu2>1</bleu2>
+</st>
+<st>
+<s_id>3</s_id>
+<s>그런데 대부분의 범죄소년에게 그런 곳은 없다.</s>
+<wcnt>0</wcnt>
+<bleu1>0</bleu1>
+<bleu2>0</bleu2>
+</st>
+<st>
+<s_id>4</s_id>
+<s>11월21일 개봉한 영화 <범죄소년>은 소년원을 들락거리는 한 청소년을 핸드헬드 카메라로 따라간다.</s>
+<wcnt>1</wcnt>
+<bleu1>1</bleu1>
+<bleu2>1</bleu2>
+</st>
+<st>
+<s_id>5</s_id>
+<s>‘비행소년’이 아니라 ‘범죄소년’이다.</s>
+<wcnt>0</wcnt>
+<bleu1>0</bleu1>
+<bleu2>0</bleu2>
+</st>
+<st>
+<s_id>6</s_id>
+<s>‘범법행위 우려’나 ‘반사회성’ 같은 모호한 인격이 아니라 이미 확고한 ‘범죄자’로 규정된 사람이다.</s>
+<wcnt>0</wcnt>
+<bleu1>0</bleu1>
+<bleu2>0</bleu2>
+</st>
+<st>
+<s_id>7</s_id>
+<s>범죄소년의 집은 어디인가 
+<범죄소년>의 주인공 15살 장지구(서영주)의 집은 처음엔 당뇨로 하루 종일 누워 있는 할아버지와 사는 좁은 아파트였다.</s>
+<wcnt>1</wcnt>
+<bleu1>0</bleu1>
+<bleu2>0</bleu2>
+</st>
+<st>
+<s_id>8</s_id>
+<s>아버지는 원래 없었고 어머니는 그가 3살 때 집을 나갔다.</s>
+<wcnt>0</wcnt>
+<bleu1>0</bleu1>
+<bleu2>0</bleu2>
+</st>
+<st>
+<s_id>9</s_id>
+<s>대소변을 씻겨야 하는 할아버지가 그의 유일한 보호자였다.</s>
+<wcnt>0</wcnt>
+<bleu1>0</bleu1>
+<bleu2>0</bleu2>
+</st>
+<st>
+<s_id>10</s_id>
+<s>잠자다가도 할아버지 코에 손을 대볼 만큼 소년은 유일한 보호자이자 가족에게 매달린다.</s>
+<wcnt>0</wcnt>
+<bleu1>0</bleu1>
+<bleu2>0</bleu2>
+</st>
+<st>
+<s_id>11</s_id>
+<s>“제가 없으면 할아버지는 안 된단 말이에요.” 소년의 말은 진심이었다.</s>
+<wcnt>0</wcnt>
+<bleu1>0</bleu1>
+<bleu2>0</bleu2>
+</st>
+<st>
+<s_id>12</s_id>
+<s>폭력으로 보호관찰을 받는 와중에 친구들과 특수절도에 상해까지 저지른 주제에 누가 누굴 걱정하느냐는 판사의 판단은 사실이었다.</s>
+<wcnt>0</wcnt>
+<bleu1>0</bleu1>
+<bleu2>0</bleu2>
+</st>
+<st>
+<s_id>13</s_id>
+<s>진심이 사실을 이기지 못한 뒤부터 그의 거처는 심하게 흔들리기 시작했다.</s>
+<wcnt>0</wcnt>
+<bleu1>0</bleu1>
+<bleu2>0</bleu2>
+</st>
+<st>
+<s_id>14</s_id>
+<s>소년원에 있을 때 할아버지가 돌아가셨다.</s>
+<wcnt>0</wcnt>
+<bleu1>0</bleu1>
+<bleu2>0</bleu2>
+</st>
+<st>
+<s_id>15</s_id>
+<s>이제 소년원을 나간들 돌아갈 곳이 없다.</s>
+<wcnt>0</wcnt>
+<bleu1>0</bleu1>
+<bleu2>0</bleu2>
+</st>
+<st>
+<s_id>16</s_id>
+<s>소년원에서 나가기를 바랄 수도, 그렇다고 계속 있기를 바랄 수도 없는 처지다.</s>
+<wcnt>0</wcnt>
+<bleu1>0</bleu1>
+<bleu2>0</bleu2>
+</st>
+<st>
+<s_id>17</s_id>
+<s>집이 없다는 것은 누구도 그의 존재를 온전히 받아들이지 않는다는 것을 의미한다.</s>
+<wcnt>0</wcnt>
+<bleu1>0</bleu1>
+<bleu2>0</bleu2>
+</st>
+<st>
+<s_id>18</s_id>
+<s>심지어 자신조차도.
+그런데 갑자기 엄마(이정현)가 나타났다.</s>
+<wcnt>0</wcnt>
+<bleu1>0</bleu1>
+<bleu2>0</bleu2>
+</st>
+<st>
+<s_id>19</s_id>
+<s>17살 때 미혼모로 그를 낳은 뒤 도망쳤던 엄마와 소년원 면회실에서 처음 눈을 마주쳤다.</s>
+<wcnt>0</wcnt>
+<bleu1>0</bleu1>
+<bleu2>0</bleu2>
+</st>
+<st>
+<s_id>20</s_id>
+<s>엄마도 남의 집에 얹혀사는 처지지만 그와 함께 살기로 용기를 낸다.</s>
+<wcnt>0</wcnt>
+<bleu1>0</bleu1>
+<bleu2>0</bleu2>
+</st>
+<st>
+<s_id>21</s_id>
+<s>할 줄 아는 거라곤 급할 때 얼굴에 철판 깔고 사람들에게 매달리거나 남의 짐을 터는 재주밖에 없는 엄마와 평소엔 한없이 다정하지만 작은 말에도 쉽게 폭발하는 아들은 애처로울 만큼 다정하다.</s>
+<wcnt>0</wcnt>
+<bleu1>0</bleu1>
+<bleu2>0</bleu2>
+</st>
+<st>
+<s_id>22</s_id>
+<s>11년 만에 만난 지구와 엄마 효승은 모자 사이라기보다는 애인처럼 보인다.</s>
+<wcnt>0</wcnt>
+<bleu1>0</bleu1>
+<bleu2>0</bleu2>
+</st>
+<st>
+<s_id>23</s_id>
+<s>사람의 체온이 있는 곳이 집이 된다.</s>
+<wcnt>0</wcnt>
+<bleu1>0</bleu1>
+<bleu2>0</bleu2>
+</st>
+<st>
+<s_id>24</s_id>
+<s>아들과 엄마는 영화 내내 사람의 체온을 좇아가며 그곳에 집 한 칸 갖기를 소망한다.</s>
+<wcnt>0</wcnt>
+<bleu1>1</bleu1>
+<bleu2>1</bleu2>
+</st>
+<st>
+<s_id>25</s_id>
+<s>“한 번만 봐주시면 안 돼요?”
+찜질방으로, 지하철로, 여관방으로 들어가나 했더니 주유소 뒷방에서 다시 소년원으로. 범죄소년이 범죄소년을 낳고 미혼모의 자식이 다시 미혼부가 되는 가난의 경로를 밟으며 모자의 표정은 서로 닮아간다.</s>
+<wcnt>0</wcnt>
+<bleu1>0</bleu1>
+<bleu2>0</bleu2>
+</st>
+<st>
+<s_id>26</s_id>
+<s>아니, 항상 울 듯 웃을 듯한 얼굴로 “한 번만 봐주시면 안 되냐”고 누군가에게 애원해야 하는 그들의 표정과 언어는 가난을 닮아간다.</s>
+<wcnt>0</wcnt>
+<bleu1>0</bleu1>
+<bleu2>0</bleu2>
+</st>
+<st>
+<s_id>27</s_id>
+<s>벼랑 끝에 몰린 사람들의 공통 언어다.</s>
+<wcnt>0</wcnt>
+<bleu1>0</bleu1>
+<bleu2>0</bleu2>
+</st>
+<st>
+<s_id>28</s_id>
+<s>국가인권위원회가 영화사 남원과 공동 제작한 이 영화는 소년 장지구의 감정뿐 아니라 가난의 숨결, 그 안의 체온까지 생생한 질감으로 그려낸다.</s>
+<wcnt>0</wcnt>
+<bleu1>1</bleu1>
+<bleu2>1</bleu2>
+</st>
+<st>
+<s_id>29</s_id>
+<s>영화 <사과>를 만든 강이관 감독이 메가폰을 잡은 이 영화에서 가난은 뜻밖에 풋풋한 표정으로 구체적인 말을 건넨다.</s>
+<wcnt>1</wcnt>
+<bleu1>1</bleu1>
+<bleu2>1</bleu2>
+</st>
+<st>
+<s_id>30</s_id>
+<s>“저기요, 한 번만 봐주시면 안 돼요?”
+강이관 감독은 전화 통화에서 이렇게 말했다.</s>
+<wcnt>0</wcnt>
+<bleu1>0</bleu1>
+<bleu2>0</bleu2>
+</st>
+<st>
+<s_id>31</s_id>
+<s>“법원이나 쉼터를 돌아보다가 우리 때 청소년 범죄자거나 미혼모였던 이들은 지금 어떻게 되었을까 궁금했다.</s>
+<wcnt>0</wcnt>
+<bleu1>0</bleu1>
+<bleu2>0</bleu2>
+</st>
+<st>
+<s_id>32</s_id>
+<s>극중 엄마 효승은 몸은 어른이지만 아직도 뿌리내리지 못한 어린아이와 같은 상태다.</s>
+<wcnt>0</wcnt>
+<bleu1>0</bleu1>
+<bleu2>0</bleu2>
+</st>
+<st>
+<s_id>33</s_id>
+<s>아들에게 해주고 싶은 것은 많지만 경제적으로나 교육적으로 전혀 책임질 수 없는 상황이다.</s>
+<wcnt>0</wcnt>
+<bleu1>0</bleu1>
+<bleu2>0</bleu2>
+</st>
+<st>
+<s_id>34</s_id>
+<s>둘이 만나서 좋아지는 것은 하나도 없다.</s>
+<wcnt>0</wcnt>
+<bleu1>0</bleu1>
+<bleu2>0</bleu2>
+</st>
+<st>
+<s_id>35</s_id>
+<s>그러나 둘에게 동기 같은 게 생겼다.</s>
+<wcnt>0</wcnt>
+<bleu1>0</bleu1>
+<bleu2>0</bleu2>
+</st>
+<st>
+<s_id>36</s_id>
+<s>지구가 엄마를 업으려 하고 효승이 지구를 챙기려 하는 것, 약한 사람이 약한 사람을 돕는 것, 그게 더 큰 힘이 아닌가 싶었다.</s>
+<wcnt>0</wcnt>
+<bleu1>0</bleu1>
+<bleu2>0</bleu2>
+</st>
+<st>
+<s_id>37</s_id>
+<s>” 
+ 
+
+ 배우들의 실제 나이로 살린 리얼리티
+<범죄소년>은 리얼리티를 중시하는 영화다.</s>
+<wcnt>1</wcnt>
+<bleu1>1</bleu1>
+<bleu2>1</bleu2>
+</st>
+<st>
+<s_id>38</s_id>
+<s>1980년생인 배우 이정현이 33살 효승 역을 맡고 실제 중학교 2학년인 서영주가 장지구 역할을 맡았다.</s>
+<wcnt>0</wcnt>
+<bleu1>0</bleu1>
+<bleu2>0</bleu2>
+</st>
+<st>
+<s_id>39</s_id>
+<s>“지금, 여기의 현실을 말하기 위해” 극영화이면서도 굳이 실제의 법원과 소년원, 쉼터를 돌며 촬영했다.</s>
+<wcnt>1</wcnt>
+<bleu1>0</bleu1>
+<bleu2>0</bleu2>
+</st>
+<st>
+<s_id>40</s_id>
+<s>강 감독은 이렇게 말했다.</s>
+<wcnt>0</wcnt>
+<bleu1>0</bleu1>
+<bleu2>0</bleu2>
+</st>
+<st>
+<s_id>41</s_id>
+<s>“우리나라의 청소년 정책은 가정이 우선권을 갖는다.</s>
+<wcnt>0</wcnt>
+<bleu1>0</bleu1>
+<bleu2>0</bleu2>
+</st>
+<st>
+<s_id>42</s_id>
+<s>부모가 어떠한지는 상관하지 않는다.</s>
+<wcnt>0</wcnt>
+<bleu1>0</bleu1>
+<bleu2>0</bleu2>
+</st>
+<st>
+<s_id>43</s_id>
+<s>소년원에 다녀온 아이들이 또 아버지에게 맞거나 버림받는 똑같은 환경에서 다시 범죄를 저지른다.</s>
+<wcnt>0</wcnt>
+<bleu1>0</bleu1>
+<bleu2>0</bleu2>
+</st>
+<st>
+<s_id>44</s_id>
+<s>처벌하고 보호하는 각자 역할에 충실하기는 한데 서로를 엮어내는 세밀한 감수성은 없었다.</s>
+<wcnt>1</wcnt>
+<bleu1>0</bleu1>
+<bleu2>0</bleu2>
+</st>
+<st>
+<s_id>45</s_id>
+<s>” 공분과 각성을 노리는 많은 ‘사회적 영화’들과 달리 이 영화가 공감과 다정한 이해를 부추기는 것은 이 감수성 때문이다.</s>
+<wcnt>1</wcnt>
+<bleu1>1</bleu1>
+<bleu2>1</bleu2>
+</st>
+<st>
+<s_id>46</s_id>
+<s>헌법학자 김두식 교수는 인권 감수성의 핵심은 ‘불편함’이라고 말한 적이 있다.</s>
+<wcnt>1</wcnt>
+<bleu1>1</bleu1>
+<bleu2>1</bleu2>
+</st>
+<st>
+<s_id>47</s_id>
+<s>지금 어쩌면 인권 감수성은 우리 사회 약자들이 내뿜는 친근하고 따뜻한 숨결이라고 재번역될지 모른다.</s>
+<wcnt>1</wcnt>
+<bleu1>1</bleu1>
+<bleu2>1</bleu2>
+</st>
+<st>
+<s_id>48</s_id>
+<s>영화 <꽃잎> 이후 파격과 충격의 캐릭터로 기억됐던 배우 이정현이 16년 만에 장편영화에 돌아와 애처롭지만 따뜻한 엄마의 얼굴을 하게 된 걸 보면 말이다.</s>
+<wcnt>1</wcnt>
+<bleu1>1</bleu1>
+<bleu2>1</bleu2>
+</st>
+</contents>
+</news>

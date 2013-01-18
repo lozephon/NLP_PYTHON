@@ -1,0 +1,73 @@
+<form method='post' action='%s'>
+	<input type=hidden name='dirname' value='%s'/>
+	<input type=hidden name='filename' value='%s'/>
+	<input type=hidden name='prev' value='%s'/>
+	<input type=hidden name='next' value='%s'/>
+	FILENAME : %s<hr/><br/>
+	<div name='div%d'>
+		<nobr>%d) %s</nobr>
+		<br/><br/>
+		<table name='table%s' border='1'>
+			<tr>
+				<td nowrap=true name='td%d'>%s</td>
+			</tr>
+			<tr align='center'>
+				<td>
+					<input type='checkbox' name='check%d' value='%d'>
+				</td>
+			</tr>
+		</table>
+		</br>
+		<table>
+			<tr>
+				<td>
+					Type
+				</td>
+				<td>
+					<select name='select%d' size='1'>
+					<option value='%d' selected>%s</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					Additional Info
+				</td>
+				<td>
+					<input type='text name='adinfo%d' size='100'/>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					Comment
+				</td>
+				<td>
+					<input type='text name='comment%d' size='100'/>
+				</td>
+			</tr>
+		</table>
+		<input type='button' value='Add New Clause' onClick='addNewClause(%d)'/>
+		<br/>
+		
+		<div name='clauseInfoDiv%d'>
+			<div name='clauseInfos'>
+				<div name='clauseInfo' id='clauseInfo%d'>
+					<input type='text' size='250' onmouseout='highlightBack(%d,%d,%d)' onmouseover='highlight(%d,%d,%d)' name='clauseShow'/>
+					<input type='hidden' name='nSameClause%d' value=0/>
+					<input type='hidden' name='clauseValue' value='%s'/>
+					<input type='hidden' name='clauseValue' value='%s'/>
+					<input type='button' value='Delete Clause' onclick='deleteClause(%d)'/>
+				</div>
+			</div>
+			<br/>
+			<input type='button' value='Add Clause' onclick='addClause(%d)'/>
+			<input type='button' value='Delete Clause' onclick='deleteClause(%d)'/>
+		</div>
+	</div>
+	<br/><br/>
+	<input type='submit' name='submitprev' value='prev' %s/>
+	<input type='submit' name='submitnext' value='next' %s/>
+</form>
+					
+				
+	
