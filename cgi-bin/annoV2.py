@@ -4,6 +4,8 @@
 import re
 import cgi 
 import os
+import itertools
+import operator
 
 def parsing(dirname, filename):
     filepath ='data/%s/%s' % (dirname, filename)
@@ -74,18 +76,25 @@ def displayForm(dirname, filename):
     
     results = []
     try:
+        isNoClause = True
         with open('result/%s/Temp%s' % (dirname, filename), 'r') as f:
             annos = re.findall(r"<s>.*?</s>", f.read(), re.DOTALL)
             p = re.compile('<from>(.*?)</from>.*?<to>(.*?)</to>.*?<type>(.*?)</type>.*?<adinfo>(.*?)</adinfo>.*?<comment>(.*?)</comment>', re.DOTALL)
             for anno in annos:
                 clauses = re.findall(r'<clause>.*?</clause>', anno, re.DOTALL)
-
-                clauses = [list(p.search(clause).groups()) for clause in clauses]
-                results.append(clauses)
-
-            #print results
+                clauseList = []
+                for clause in clauses:
+                    isNoClause = False
+                    sames = re.findall(r'<same>.*?</same>', clause, re.DOTALL)
+                    sames = [list(p.search(same).groups()) for same in sames]
+                    clauseList.append(sames)
+                results.append(clauseList)
+                
+            if isNoClause:
+                results = []
+            
     except Exception as e:
-        print e
+        print 
     
     filename = myEncoding(filename, 'cp949', 'utf-8')
     dirname = myEncoding(dirname, 'cp949', 'utf-8')
@@ -100,9 +109,10 @@ def displayForm(dirname, filename):
                 <input type=hidden name='next' value='%s'/>
             ''' % (dirname, filename, prevfilename, nextfilename)
             
-    HTML += open('html/scriptV2.js').read()[3:] + 'FILENAME : %s' % filename
+    HTML += open('html/scriptV2.js').read() + 'FILENAME : %s' % filename
     
     idx = 0
+    uniqueId = 0
     for line in lines:
         words = line.split()
         
@@ -142,20 +152,47 @@ def displayForm(dirname, filename):
                         </table>
                         ''' % idx
                         
-        addHTML = "<input type='button' value='Add' onClick='addClause(%d)'><br/>" % idx
+        addHTML = '''<input type='button' value='Add New Clause' onClick='addNewClause(%d)'>
+                     <input type='button' value='Delete All Clauses' onclick='deleteAllClauses(%d)'/>
+                    ''' % (idx, idx)
         
-        if results and idx < 2:
-            for clauses in results[idx]:
-                addHTML += "<div name='clauseInfoDiv%d'>" % idx
-                addHTML += '''<input type='text' size='250' onmouseout='highlightBack(%d,%d,%d)' onmouseover='highlight(num,from,to)' name='clauseShow%d' id='%d'/>"
-                           '''
-                for value in clauses:
-                    addHTML += "<input type='hidden' name='clauseInfo%d' value='%s'/>" % (idx, value)
-                addHTML += "</div>"
-        
-        textHTML = "<input type=hidden name='isClause%d' value='isClause'/><input type=hidden name='clause%d' value=''/></div>" % (idx, idx)
-        
-        HTML += tableHTML + selectHTML + addHTML + textHTML + "<br/><br/>"
+        clauseHTML = ""
+        if results:
+            clauseHTML = "<div name='clauseInfoDiv%d'>" % idx
+            clauseHTML += '''<input type='hidden' name='nClause%d' value='%d'/>
+                             <br/>
+                          ''' % (idx, len(results[idx]))
+            
+            for sames in results[idx]:
+                clauseHTML += '''<div name='clauseInfos%d' id='clauseInfos%d' style="border:1px solid;"><input type='hidden' name='clauseValue%d' value='%d'/>
+                                <input type='button' value='Add Clause' onclick='addClause(%d, %d)'/>
+                                <br/>''' % (idx, uniqueId, idx, len(sames), idx, uniqueId)
+                uniqueId += 1           
+                     
+                for same in sames:
+                    textStr = " ".join(words[int(same[0]):int(same[1])+1])
+                    textStr += " - (%s, %s)" % (typelist[int(same[2])], same[3])
+                    clauseHTML += '''
+                        <div id='clauseInfo%d'>
+                        <input type='text' size='%d' onmouseout='highlightBack(%d,%d,%d)' onmouseover='highlight(%d,%d,%d)' value='%s'/>
+                        <input type='hidden' name='clauseValue%d' value='%s'/>
+                        <input type='hidden' name='clauseValue%d' value='%s'/>
+                        <input type='hidden' name='clauseValue%d' value='%s'/>
+                        <input type='hidden' name='clauseValue%d' value='%s'/>
+                        <input type='hidden' name='clauseValue%d' value='%s'/>
+                        <input type='button' value='Delete Clause' onclick='deleteClause(%d, %d)'/>
+                        </div>
+                        ''' % ((uniqueId, int(len(textStr))) + (idx, int(same[0]), int(same[1]))*2 + (textStr,) + reduce(operator.add, tuple(zip((idx,)*5,tuple(same)))) + (idx, uniqueId,)) 
+                    uniqueId += 1
+                clauseHTML += "</div><br/>"
+            clauseHTML += "</div>"
+        else:
+            clauseHTML = "<div name='clauseInfoDiv%d'>" % idx
+            clauseHTML += '''<input type='hidden' name='nClause%d' value='%d'/>
+                             <br/></div>
+                          ''' % (idx, 0)
+            
+        HTML += tableHTML + selectHTML + addHTML + clauseHTML + "</div><br/><br/>"
 
         idx += 1
     
@@ -167,10 +204,11 @@ def displayForm(dirname, filename):
     if nextfilename == '':
         nextdisabled = 'disabled'
     
-    HTML += '''    <input type='submit' name='submitprev' value='prev' %s/>
+    HTML += '''    <input type='hidden' name='nSentence' value='%d'/>
+                   <input type='submit' name='submitprev' value='prev' %s/>
                    <input type='submit' name='submitnext' value='next' %s/>
-               </form>
-            ''' % (prevdisabled, nextdisabled)
+               </form><Script Type='text/javascript'>uniqueId=%d</script>
+            ''' % (len(lines), prevdisabled, nextdisabled, uniqueId)
 
     display(HTML) 
 
@@ -187,31 +225,43 @@ def indexForm():
     display(HTML)
 
 def saveAnnotation(form, dirname, filename):
-    return
-
     logData = ""
     
-    i = 0
-    while form.getvalue('isClause%d' % i):
-        clauseStr = ''
-        if form.getvalue('clause%d' % i):
-            clauseStr = form.getvalue('clause%d' % i)
-        logData += '<s num=%d>' % i + clauseStr + '</s>\n'
-        i += 1
+    for i in range(int(form.getvalue('nSentence'))):
+        logData += "<s>"
+        if int(form.getvalue('nClause%d' % i)) > 0:
+            values = form.getvalue('clauseValue%d' % i)
+            
+            idx = 0
+            nClause = 0
+            isFirst = True
+            while nClause < int(form.getvalue('nClause%d' % i)):
+                if isFirst:
+                    logData += '\n'
+                    isFirst = False 
+                logData += "\t<clause>\n"
+                nSames = int(values[idx])
+                for j in range(nSames):
+                    logData += "\t\t<same>\n"
+                    logData += '''\t\t\t<from>%s</from>\n\t\t\t<to>%s</to>\n\t\t\t<type>%s</type>\n\t\t\t<adinfo>%s</adinfo>\n\t\t\t<comment>%s</comment>\n''' % tuple(values[idx+1:idx+6])
+                    logData += "\t\t</same>\n"
+                    idx += 5
+                idx += 1
+                nClause += 1
+                logData += "\t</clause>\n"
+        logData += "</s>\n"
     
-    print logData
     filename = myEncoding(filename,'utf-8','cp949')
     dirname = myEncoding(dirname,'utf-8','cp949')
     
-    print 'result/%s/%s' % (dirname, filename)
-    open('result/%s/Temp%s' % (dirname, filename), 'w+').write(logData)
+    open('result/%s/%s' % (dirname, filename), 'w+').write(logData)
     
 def main():  
     display("Content-Type: text/html; charset-UTF-8\n\n")
     display("<html><head><title>Sentence annotator</title></head><body>")
     
     form = cgi.FieldStorage() 
-    print form.getlist('clauseInfoz0')
+    
     try:
         form['init'].value
         try:

@@ -1,0 +1,32 @@
+<s></s>
+<s></s>
+<s></s>
+<s></s>
+<s></s>
+<s></s>
+<s></s>
+<s></s>
+<s></s>
+<s></s>
+<s></s>
+<s></s>
+<s></s>
+<s></s>
+<s></s>
+<s></s>
+<s></s>
+<s></s>
+<s></s>
+<s></s>
+<s></s>
+<s>
+	<clause>
+		<same>
+			<from>3</from>
+			<to>7</to>
+			<type>0</type>
+			<adinfo>안녕하시렵</adinfo>
+			<comment>니까</comment>
+		</same>
+	</clause>
+</s>

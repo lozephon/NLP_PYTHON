@@ -1,6 +1,4 @@
 <Script Type="text/javascript">
-	numClause = 0;
-    
     function getSpan(num) {
 		var checked = document.getElementsByName('check'+num);
 
@@ -9,115 +7,158 @@
 			if(checked[i].checked == true)
 				nCheck++;
 		}
+		
 		if(nCheck == 1) {
 			if(!confirm('use one size span?'))
-				return [-1,-1]
-		}
-		else if(nCheck != 2) {
-			alert('check start and end');
-			return;
-		}
-
-		var from, to;
-		var isSecond = false;
-		for(var i = 0;i<checked.length;i++) {
-			if(checked[i].checked == true) {
-				if(isSecond == false) {
-					from = checked[i].value;
-					isSecond = true;
-				}
-				else {
-					to = checked[i].value;
-					break;
+				return [-1,-1];
+				
+			for(var i = 0;i<checked.length;i++) {
+				if(checked[i].checked == true) {
+					 for(var j = 0;j<checked.length;j++)
+            			checked[j].checked = false;
+					return [i, i];
 				}
 			}
 		}
+		else if(nCheck != 2) {
+			alert('check start and end');
+			return [-1,-1];
+		}
+		else {
+			var from, to;
+			var isSecond = false;
+			for(var i = 0;i<checked.length;i++) {
+				if(checked[i].checked == true) {
+					if(isSecond == false) {
+						from = checked[i].value;
+						isSecond = true;
+					}
+					else {
+						to = checked[i].value;
+						break;
+					}
+				}
+			} 
+			for(var i = 0;i<checked.length;i++)
+            	checked[i].checked = false;
+
+			return [from, to];
+		}
     }
+    
     function addNewClause(num) {
+		var spanRtn = getSpan(num);
+		if(spanRtn[0] == -1)
+			return;
+
+       	from = spanRtn[0];
+       	to = spanRtn[1];
 		
-    }
-	function addClause(num) {
-		var checked = document.getElementsByName('check'+num);
-          
-        var nCheck = 0;
-        for(var i = 0;i<checked.length;i++) {
-          if(checked[i].checked == true)
-            nCheck++;
-        }
-        if(nCheck != 2) {
-            alert('check start and end');
-            return;
-        }
-              
-        var from, to;
-        var isSecond = false;
-        for(var i = 0;i<checked.length;i++) {
-            if(checked[i].checked == true) {
-                if(isSecond == false) {
-                    from = checked[i].value;
-                    isSecond = true;
-                }
-                else {
-                    to = checked[i].value;
-                    break;
-                }
-            }
-        }
-
-        for(var i = 0;i<checked.length;i++)
-            checked[i].checked = false;
-                                  
-        var newClause = document.createElement('div');
-
+		var clauseInfoDiv = document.getElementsByName('clauseInfoDiv'+num)[0];
+		var newClauseInfos = document.createElement('div');
+		newClauseInfos.setAttribute('name', 'clauseInfos'+num);
+		newClauseInfos.style.border = '1px solid';
+		newClauseInfos.id = 'clauseInfos'+uniqueId;
+		innerHTML = "<input type='hidden' name='clauseValue"+num+"' value='"+1+"'/>"+
+                   "<input type='button' value='Add Clause' onclick='addClause("+num+","+uniqueId+")'/>"+
+                   "<br/>";
+        uniqueId++;
+        
         var clauseType = document.getElementsByName('select'+num)[0];
         var tds = document.getElementsByName('td'+num);
         
-        var clauseStr = "";
-
-        for(var j = Number(from);j<Number(to)+1;j++)
+        clauseStr = "";
+		for(var j = Number(from);j<Number(to)+1;j++)
             clauseStr  += tds[j].innerText + ' ';
-
-        clauseStr  += ' (' + clauseType.options[clauseType.selectedIndex].innerText + ')';
-          
-        var str2 = from + ' ' + to +' '+clauseType.options[clauseType.selectedIndex].value;
-        var clauseAdinfo = document.getElementsByName('adinfo'+num)[0];
-        var clauseComment = document.getElementsByName('comment'+num)[0];
-        str2 += '-' + clauseAdinfo.value + '-' + clauseComment.value;
-        clauseAdinfo.value = '';
-        clauseComment.value = '';
-
-        if(document.getElementsByName('clause'+num)[0].value == '')
-            document.getElementsByName('clause'+num)[0].value = str2;
-        else
-            document.getElementsByName('clause'+num)[0].value += '/' + str2;
-              
-        var clauseIdx = document.getElementsByName('div'+num)[0].length-3 
-        newClause.innerHTML = "<input type=hidden name='clauseText"+num+"' value='"+str2+"'/>"
-                              "<input type='text' size='250' onmouseout='highlightBack("+num+","+from+","+to+")' onmouseover='highlight("+num+","+from+","+to+")' name='clauseShow"+num+"' id='"+numClause+"'/>"
-                              "<input type=button value='delete' onClick='deleteClause("+numClause+","+num+")'>";
-                              
-        newClause.childNodes[1].size = clauseStr.length*2;
-        newClause.childNodes[1].value = clauseStr ;
-        document.getElementsByName('div'+num)[0].appendChild(newClause);
-
-        numClause++;
+        clauseStr  += ' (' + clauseType.options[clauseType.selectedIndex].innerText + ', '+ document.getElementsByName('adinfo'+num)[0].value+')';
+		//alert(clauseStr);
+		
+		var adinfo = document.getElementsByName('adinfo'+num)[0].value;
+		var comment = document.getElementsByName('comment'+num)[0].value;
+		if(adinfo == '')
+			adinfo = ' '
+		if(comment == '')
+			comment = ' '
+			
+		innerHTML += "<div id='clauseInfo"+uniqueId+"'>"+
+                        "<input type='text' size='"+clauseStr.length*2+"' onmouseout='highlightBack("+num+","+from+","+to+")' onmouseover='highlight("+num+","+from+","+to+")' value='"+clauseStr+"'/>"+
+                        "<input type='hidden' name='clauseValue"+num+"' value='"+from+"'/>"+
+                        "<input type='hidden' name='clauseValue"+num+"' value='"+to+"'/>"+
+                        "<input type='hidden' name='clauseValue"+num+"' value='"+clauseType.options[clauseType.selectedIndex].value+"'/>"+
+                        "<input type='hidden' name='clauseValue"+num+"' value='"+adinfo+"'/>"+
+                        "<input type='hidden' name='clauseValue"+num+"' value='"+comment+"'/>"+
+                        "<input type='button' value='Delete Clause' onclick='deleteClause("+num+", "+uniqueId+")'/>"+
+                        "</div>";
+		
+		newClauseInfos.innerHTML = innerHTML;
+		clauseInfoDiv.appendChild(newClauseInfos);
+		clauseInfoDiv.appendChild(document.createElement('br'));
+		uniqueId++;
+		
+		clauseInfoDiv.childNodes[0].value = Number(clauseInfoDiv.childNodes[0].value)+1;
     }
-      
+    
+	function addClause(num, num2) { 
+		var spanRtn = getSpan(num);
+		if(spanRtn[0] == -1)
+			return;
+
+       	from = spanRtn[0];
+       	to = spanRtn[1];
+		
+		var clauseInfos = document.getElementById('clauseInfos'+num2);
+		var newClauseInfo = document.createElement('div');
+		newClauseInfo.id = 'clauseInfo'+uniqueId;
+       
+        var clauseType = document.getElementsByName('select'+num)[0];
+        var tds = document.getElementsByName('td'+num);
+        
+        clauseStr = "";
+		for(var j = Number(from);j<Number(to)+1;j++)
+            clauseStr  += tds[j].innerText + ' ';
+        clauseStr  += ' (' + clauseType.options[clauseType.selectedIndex].innerText + ', '+ document.getElementsByName('adinfo'+num)[0].value+')';
+		//alert(clauseStr);
+		
+		var adinfo = document.getElementsByName('adinfo'+num)[0].value;
+		var comment = document.getElementsByName('comment'+num)[0].value;
+		if(adinfo == '')
+			adinfo = ' '
+		if(comment == '')
+			comment = ' '
+
+		innerHTML = "<input type='text' size='"+clauseStr.length*2+"' onmouseout='highlightBack("+num+","+from+","+to+")' onmouseover='highlight("+num+","+from+","+to+")' value='"+clauseStr+"'/>"+
+                        "<input type='hidden' name='clauseValue"+num+"' value='"+from+"'/>"+
+                        "<input type='hidden' name='clauseValue"+num+"' value='"+to+"'/>"+
+                        "<input type='hidden' name='clauseValue"+num+"' value='"+clauseType.options[clauseType.selectedIndex].value+"'/>"+
+                        "<input type='hidden' name='clauseValue"+num+"' value='"+adinfo+"'/>"+
+                        "<input type='hidden' name='clauseValue"+num+"' value='"+comment+"'/>"+
+                        "<input type='button' value='Delete Clause' onclick='deleteClause("+num+", "+uniqueId+")'/>";
+		
+		newClauseInfo.innerHTML = innerHTML;
+		clauseInfos.appendChild(newClauseInfo);
+		uniqueId++;
+		
+		clauseInfos.childNodes[0].value = Number(clauseInfos.childNodes[0].value)+1; 
+    }
+    function deleteAllClauses(num) {
+    	var clauseInfoDiv = document.getElementsByName('clauseInfoDiv'+num)[0];
+    	var nChild = clauseInfoDiv.childNodes.length;
+    	for(var i = 4;i<nChild;i++) 
+    		clauseInfoDiv.removeChild(clauseInfoDiv.childNodes[4]);
+    	clauseInfoDiv.childNodes[0].value = '0'; 
+    }
     function deleteClause(num, num2) {
-        var temp1 = document.getElementById(num).parentNode.parentNode;
-        var temp2 = document.getElementById(num).parentNode;
-        temp1.removeChild(temp2);
-          
-        var clauseTexts = document.getElementsByName('clauseText'+num2);
-        var clauseStr = '';
-
-        for(var i = 0;i<clauseTexts.length;i++) {
-            clauseStr += clauseTexts[i].value;
-            if(i <clauseTexts.length-1)
-                clauseStr+='/';
-        }
-
-        document.getElementsByName('clause'+num2)[0].value = clauseStr
+		var clauseInfo = document.getElementById('clauseInfo'+num2);
+		var clauseInfos = clauseInfo.parentNode;
+		clauseInfos.removeChild(clauseInfo);
+		clauseInfos.childNodes[0].value = Number(clauseInfos.childNodes[0].value)-1;
+		if(Number(clauseInfos.childNodes[0].value) == 0) {
+			var clauseInfoDiv = clauseInfos.parentNode;
+			var br = clauseInfos.nextSibling;
+			clauseInfoDiv.removeChild(clauseInfos);
+			clauseInfoDiv.removeChild(br);
+			clauseInfoDiv.childNodes[0].value = Number(clauseInfoDiv.childNodes[0].value) - 1; 
+		} 
     }
     
     function highlight(num, from, to) {

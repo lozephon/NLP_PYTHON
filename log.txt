@@ -1,1 +1,48 @@
-aa.txt 辆钦家垫技_10_anno.txt 辆钦家垫技_10_anno.xml 辆钦家垫技_2_anno.txt 辆钦家垫技_3_anno.txt 辆钦家垫技_4_anno.txt 辆钦家垫技_5_anno.txt 辆钦家垫技_6_anno.txt 辆钦家垫技_7_anno.txt 辆钦家垫技_8_anno.txt 辆钦家垫技_9_anno.txt
+<s>
+	<clause>
+		<same>
+			<from>0</from>
+			<to>10</to>
+			<type>1</type>
+			<adinfo>A</adinfo>
+			<comment>COMMENT</comment>
+		</same>
+		<same>
+			<from>5</from>
+			<to>8</to>
+			<type>1</type>
+			<adinfo> </adinfo>
+			<comment>COMMENT</comment>
+		</same>
+	</clause>
+	<clause>
+		<same>
+			<from>3</from>
+			<to>3</to>
+			<type>1</type>
+			<adinfo>C</adinfo>
+			<comment>COMMENT</comment>
+		</same>
+	</clause>
+</s>
+<s></s>
+<s>
+	<clause>
+		<same>
+			<from>0</from>
+			<to>2</to>
+			<type>1</type>
+			<adinfo>ADDINFO</adinfo>
+			<comment>COMMENT</comment>
+		</same>
+	</clause>
+	<clause>
+		<same>
+			<from>0</from>
+			<to>2</to>
+			<type>1</type>
+			<adinfo>ADDINFO</adinfo>
+			<comment>COMMENT</comment>
+		</same>
+	</clause>
+</s>

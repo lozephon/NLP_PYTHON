@@ -50,21 +50,25 @@
 		<br/>
 		
 		<div name='clauseInfoDiv%d'>
-			<div name='clauseInfos'>
-				<div name='clauseInfo' id='clauseInfo%d'>
-					<input type='text' size='250' onmouseout='highlightBack(%d,%d,%d)' onmouseover='highlight(%d,%d,%d)' name='clauseShow'/>
+			<input type='button' value='Delete Clause' onclick='deleteClause(%d)'/>
+			<input type='hidden' name='nClause%d' value=%d/>
+			<br/>
+			<div name='clauseInfos%d' id='clauseInfos%d'>
+				<input type='hidden' name='clauseValue' value='%s'/>
+				<input type='button' value='Add Clause' onclick='addClause(%d)'/>
+				<br/>
+				<div id='clauseInfo%d'>
+					<input type='text' size='250' onmouseout='highlightBack(%d,%d,%d)' onmouseover='highlight(%d,%d,%d)'/>
 					<input type='hidden' name='nSameClause%d' value=0/>
 					<input type='hidden' name='clauseValue' value='%s'/>
 					<input type='hidden' name='clauseValue' value='%s'/>
 					<input type='button' value='Delete Clause' onclick='deleteClause(%d)'/>
 				</div>
 			</div>
-			<br/>
-			<input type='button' value='Add Clause' onclick='addClause(%d)'/>
-			<input type='button' value='Delete Clause' onclick='deleteClause(%d)'/>
 		</div>
 	</div>
 	<br/><br/>
+	<input type='hidden' name='nSentence' value=%d/>
 	<input type='submit' name='submitprev' value='prev' %s/>
 	<input type='submit' name='submitnext' value='next' %s/>
 </form>
